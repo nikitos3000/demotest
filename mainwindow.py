@@ -10,13 +10,14 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import QListWidgetItem
 from card import FamilyCard
+from PyQt6.QtGui import QIcon
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(808, 600)
-
+        MainWindow.setWindowIcon(QIcon('res/icon.png'))
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.listView = QtWidgets.QListWidget(parent=self.centralwidget)
