@@ -43,12 +43,12 @@ def calculate_ratio(member):
 if __name__ == '__main__':
     con, cur = get_connection()
 
-    cur.execute("SELECT fm.full_name, fj.position, fj.organization, fj.salary, fm.birth_date "
+    cur.execute("SELECT fm.member_name, fm.member_surname, fm.member_lastname, fj.position, fj.organization, fj.salary, fm.birth_date "
                 "FROM family_members fm "
                 "LEFT JOIN family_jobs fj ON fm.id = fj.person;")
     family_jobs_from_db = cur.fetchall()
     family_jobs = [
-        Family(x[0], x[1], x[2], x[3], x[4]) for x in family_jobs_from_db
+        Family(f'{x[0]} {x[1]} {x[2]}', x[3], x[4], x[5], x[6]) for x in family_jobs_from_db
                    ]
     cur.close()
     con.close()
@@ -56,8 +56,6 @@ if __name__ == '__main__':
     for member in family_jobs:
         calculate_age(member)
 
-    for member in family_jobs:
-        calculate_ratio(member)
 
 
 
